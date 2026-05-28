@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">App_Chats</string>
+    <string name="nombre">Oumayma Outhmani</string>
+    <string name="btn_registrar">Sign Up</string>
+    <string name="btn_logear">Login</string>
+    <string name="Registro_EditT_Nombre_Usuario">Username</string>
+    <string name="R_ET_Email">Email</string>
+    <string name="R_ET_Codigo">Password</string>
+    <string name="R_ET_RepetirCode">Repeat Password</string>
+    <string name="btn_registr">Register</string>
+
+    <string name="menu_perfil">User Profile</string>
+    <string name="menu_acerca_de">About</string>
+    <string name="menu_salir">Logout</string>
+
+    <string name="L_Et_email">Email</string>
+    <string name="L_Et_password">Password</string>
+    <string name="Btn_login">Login</string>
+
+    <string name="Nombre_usuario">Username</string>
+
+    <string name="Item_nombre_usuario">Username</string>
+    <string name="Item_email_usuario">User Email</string>
+
+    <string name="Et_buscar_usuario">Search user</string>
+
+    <!--User Profile-->
+    <string name="P_n_usuario">Username</string>
+    <string name="P_email">Email</string>
+    <string name="P_nombres">Names</string>
+    <string name="P_apellidos">Last Names</string>
+    <string name="P_profesion">Profession</string>
+    <string name="P_domicilio">Address</string>
+    <string name="P_edad">Age</string>
+    <string name="P_telefono">Phone</string>
+    <string name="Btn_Guardar">Save</string>
+
+    <string name="BtnElegirImagenDe">Choose image from</string>
+    <string name="BtnActualizarImagen">Update image</string>
+
+    <!--Chat-->
+    <string name="N_usuario_chat">Username</string>
+    <string name="Et_mensaje">Write a message</string>
+
+    <!--Item Chat-->
+    <string name="TXT_ver_mensaje">Hi, how are you?</string>
+
+    <!-- Cloudinary Messages -->
+    <string name="msg_imagen_seleccionada">Image selected. Press \'Update\' to upload</string>
+    <string name="msg_selecciona_imagen">You must select an image first</string>
+    <string name="msg_subiendo">Uploading image</string>
+    <string name="msg_por_favor_espera">Please wait...</string>
+    <string name="msg_foto_actualizada">Photo updated successfully!</string>
+    <string name="msg_error">Error</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

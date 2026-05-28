@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">App_Chats</string>
     <string name="nombre">Oumayma Outhmani</string>
     <string name="btn_registrar">Registrarme</string>
     <string name="btn_logear">Ingresar</string>
     <string name="Registro_EditT_Nombre_Usuario">Nombre de usuario</string>
-    <string name="R_ET_Email">Correo Electronico</string>
+    <string name="R_ET_Email">Correo Electrónico</string>
     <string name="R_ET_Codigo">Contraseña</string>
     <string name="R_ET_RepetirCode">Repite tu Contraseña</string>
     <string name="btn_registr">Registrar</string>
@@ -13,7 +14,7 @@
     <string name="menu_acerca_de">Acerca de</string>
     <string name="menu_salir">Cerrar Sesión</string>
 
-    <string name="L_Et_email">Correo electronico</string>
+    <string name="L_Et_email">Correo electrónico</string>
     <string name="L_Et_password">Contraseña</string>
     <string name="Btn_login">Ingresar</string>
 
@@ -35,13 +36,11 @@
     <string name="P_telefono">Teléfono</string>
     <string name="Btn_Guardar">Guardar</string>
 
-
     <string name="BtnElegirImagenDe">Elegir imagen de</string>
     <string name="BtnActualizarImagen">Actualizar imagen</string>
 
     <!--Chat-->
     <string name="N_usuario_chat">Nombre de usuario</string>
-    
     <string name="Et_mensaje">Escriba un mensaje</string>
 
     <!--Item Chat-->

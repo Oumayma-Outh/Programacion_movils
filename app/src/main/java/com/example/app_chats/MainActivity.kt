@@ -21,6 +21,7 @@ import com.example.app_chats.Fragmentos.FragmentoChats
 import com.example.app_chats.Fragmentos.FragmentoUsuarios
 import com.example.app_chats.Modelo.Usuario
 import com.example.app_chats.Perfil.PerfilActivity
+import com.example.app_chats.Utilidades.CloudinaryManager
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -43,6 +44,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        
+        // Inicializar todos los managers
+        CloudinaryManager.initialize(this)
+        PreferencesManager.initialize(this)
+        AppNotificationManager.crearCanalNotificacion(this)
+        SoundManager.initialize(this)
+        
         InicializarComponentes()
         ObtenerDato()
 

@@ -35,6 +35,7 @@ class PerfilActivity : AppCompatActivity() {
     private lateinit var P_edad: EditText
     private lateinit var P_telefono: EditText
     private lateinit var Btn_guardar: Button
+    private lateinit var Btn_preferencias: Button
     private lateinit var Editar_imagen : ImageView
 
     var user: FirebaseUser? = null
@@ -48,6 +49,11 @@ class PerfilActivity : AppCompatActivity() {
         ObtenerDatos()
         Btn_guardar.setOnClickListener {
             ActualizarInformacion()
+        }
+
+        Btn_preferencias.setOnClickListener {
+            val intent = Intent(applicationContext, PreferencesActivity::class.java)
+            startActivity(intent)
         }
 
         Editar_imagen.setOnClickListener {
@@ -69,6 +75,7 @@ class PerfilActivity : AppCompatActivity() {
         P_edad = findViewById(R.id.P_edad)
         P_telefono = findViewById(R.id.P_telefono)
         Btn_guardar = findViewById(R.id.Btn_Guardar)
+        Btn_preferencias = findViewById(R.id.Btn_Preferencias)
         Editar_imagen = findViewById(R.id.Editar_imagen)
 
         user = FirebaseAuth.getInstance().currentUser

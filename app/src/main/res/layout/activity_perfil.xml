@@ -165,14 +165,31 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <!--button-->
-
-            <Button
-                android:id="@+id/Btn_Guardar"
-                android:text="@string/Btn_Guardar"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
                 android:layout_marginTop="10dp"
-                android:layout_gravity="center"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"/>
+                android:layout_marginBottom="16dp">
+
+                <Button
+                    android:id="@+id/Btn_Guardar"
+                    android:text="@string/Btn_Guardar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"/>
+
+                <Button
+                    android:id="@+id/Btn_Preferencias"
+                    android:text="Preferencias"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"/>
+
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

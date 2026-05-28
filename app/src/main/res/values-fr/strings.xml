@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">App_Chats</string>
+    <string name="nombre">Oumayma Outhmani</string>
+    <string name="btn_registrar">S\'inscrire</string>
+    <string name="btn_logear">Connexion</string>
+    <string name="Registro_EditT_Nombre_Usuario">Nom d\'utilisateur</string>
+    <string name="R_ET_Email">E-mail</string>
+    <string name="R_ET_Codigo">Mot de passe</string>
+    <string name="R_ET_RepetirCode">Répétez le mot de passe</string>
+    <string name="btn_registr">S\'inscrire</string>
+
+    <string name="menu_perfil">Profil utilisateur</string>
+    <string name="menu_acerca_de">À propos</string>
+    <string name="menu_salir">Déconnexion</string>
+
+    <string name="L_Et_email">E-mail</string>
+    <string name="L_Et_password">Mot de passe</string>
+    <string name="Btn_login">Connexion</string>
+
+    <string name="Nombre_usuario">Nom d\'utilisateur</string>
+
+    <string name="Item_nombre_usuario">Nom d\'utilisateur</string>
+    <string name="Item_email_usuario">E-mail utilisateur</string>
+
+    <string name="Et_buscar_usuario">Rechercher un utilisateur</string>
+
+    <!--Profil utilisateur-->
+    <string name="P_n_usuario">Nom d\'utilisateur</string>
+    <string name="P_email">E-mail</string>
+    <string name="P_nombres">Prénoms</string>
+    <string name="P_apellidos">Noms de famille</string>
+    <string name="P_profesion">Profession</string>
+    <string name="P_domicilio">Adresse</string>
+    <string name="P_edad">Âge</string>
+    <string name="P_telefono">Téléphone</string>
+    <string name="Btn_Guardar">Enregistrer</string>
+
+    <string name="BtnElegirImagenDe">Choisir une image de</string>
+    <string name="BtnActualizarImagen">Mettre à jour l\'image</string>
+
+    <!--Chat-->
+    <string name="N_usuario_chat">Nom d\'utilisateur</string>
+    <string name="Et_mensaje">Écrivez un message</string>
+
+    <!--Item Chat-->
+    <string name="TXT_ver_mensaje">Salut, comment ça va?</string>
+
+    <!-- Messages Cloudinary -->
+    <string name="msg_imagen_seleccionada">Image sélectionnée. Appuyez sur \'Mettre à jour\' pour télécharger</string>
+    <string name="msg_selecciona_imagen">Vous devez d\'abord sélectionner une image</string>
+    <string name="msg_subiendo">Téléchargement de l\'image</string>
+    <string name="msg_por_favor_espera">Veuillez patienter...</string>
+    <string name="msg_foto_actualizada">Photo mise à jour avec succès!</string>
+    <string name="msg_error">Erreur</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Bonjour le fragment vide</string>
+</resources>

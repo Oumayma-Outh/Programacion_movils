@@ -7,37 +7,71 @@
     android:layout_height="match_parent"
     tools:context=".Perfil.EditarImagenPerfil">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:padding="16dp">
 
+        <!-- Imagen Preview (Responsive) -->
         <ImageView
-            android:id="@+id/ImagenPerfilActualizar"
+            android:id="@+id/previewImagen"
             android:layout_gravity="center"
             android:background="#354f60"
             android:scaleType="centerCrop"
             android:src="@drawable/imagen_usuario"
-            android:layout_width="350dp"
-            android:layout_height="350dp"/>
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            android:layout_marginBottom="20dp"/>
 
+        <!-- Container de progreso (oculto por defecto) -->
+        <LinearLayout
+            android:id="@+id/containerProgreso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginBottom="20dp"
+            android:padding="16dp"
+            android:background="@android:color/darker_gray"
+            android:gravity="center">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:indeterminate="false"
+                android:max="100"/>
+
+            <TextView
+                android:id="@+id/progressText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subiendo imagen..."
+                android:textColor="@android:color/white"
+                android:layout_marginTop="8dp"/>
+
+        </LinearLayout>
+
+        <!-- Botón Elegir Imagen -->
         <Button
             android:id="@+id/BtnElegirImagenDe"
             android:text="@string/BtnElegirImagenDe"
             android:layout_marginTop="10dp"
-
             android:layout_width="240dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textSize="14sp"/>
 
+        <!-- Botón Actualizar Imagen -->
         <Button
             android:id="@+id/BtnActualizarImagen"
             android:text="@string/BtnActualizarImagen"
             android:layout_marginTop="10dp"
-          
             android:layout_width="240dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textSize="14sp"/>
 
     </LinearLayout>
 
