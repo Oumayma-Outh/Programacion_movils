@@ -44,19 +44,35 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun ValidarDatos() {
-        val email : String = L_Et_email.text.toString()
-        val password : String = L_Et_password.text.toString()
+        val email : String = L_Et_email.text.toString().trim()
+        val password : String = L_Et_password.text.toString().trim()
 
         if (email.isEmpty()){
             Toast.makeText(applicationContext, "Ingrese su correo electrónico", Toast.LENGTH_SHORT).show()
+            L_Et_email.requestFocus()
+            return
+        }
+        if (!isValidEmail(email)) {
+            Toast.makeText(applicationContext, "Ingrese un correo válido", Toast.LENGTH_SHORT).show()
+            L_Et_email.requestFocus()
+            return
         }
         if (password.isEmpty()){
             Toast.makeText(applicationContext, "Ingrese su contraseña", Toast.LENGTH_SHORT).show()
+            L_Et_password.requestFocus()
+            return
         }
-        else{
-            LoginUsuario(email, password)
+        if (password.length < 6) {
+            Toast.makeText(applicationContext, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show()
+            L_Et_password.requestFocus()
+            return
         }
-
+        
+        LoginUsuario(email, password)
+    }
+    
+    private fun isValidEmail(email: String): Boolean {
+        return email.contains("@") && email.contains(".")
     }
     private fun LoginUsuario(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)

@@ -1,5 +1,6 @@
 package com.example.app_chats.Perfil
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -10,8 +11,11 @@ import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.example.app_chats.MainActivity
 import com.example.app_chats.R
+import com.example.app_chats.Utilidades.LocaleManager
 import com.example.app_chats.Utilidades.PreferencesManager
+import com.example.app_chats.Utilidades.ThemeManager
 
 /**
  * PreferencesActivity - Configuración de preferencias del usuario
@@ -126,13 +130,15 @@ class PreferencesActivity : AppCompatActivity() {
     }
 
     private fun GuardarPreferencias() {
-        // Guardar tema
+        // Guardar tema y aplicar dinámicamente
         val temaSeleccionado = when (spinnerTema.selectedItemPosition) {
             1 -> "light"
             2 -> "dark"
             else -> "auto"
         }
+        val temaAnterior = PreferencesManager.getThemeMode()
         PreferencesManager.setThemeMode(temaSeleccionado)
+        ThemeManager.applyTheme(temaSeleccionado)
 
         // Guardar tamaño de letra
         val tamanoSeleccionado = when (spinnerTamanoLetra.selectedItemPosition) {
@@ -142,13 +148,18 @@ class PreferencesActivity : AppCompatActivity() {
         }
         PreferencesManager.setFontSize(tamanoSeleccionado)
 
-        // Guardar idioma
+        // Guardar idioma y aplicar dinámicamente
         val idiomaSeleccionado = when (spinnerIdioma.selectedItemPosition) {
             1 -> "en"
             2 -> "fr"
             else -> "es"
         }
+        
+        val idiomaAnterior = PreferencesManager.getLanguage()
         PreferencesManager.setLanguage(idiomaSeleccionado)
+        
+        // Aplicar idioma dinámicamente
+        LocaleManager.setLocale(this, idiomaSeleccionado)
 
         // Guardar switches
         PreferencesManager.setNotificationsEnabled(switchNotificaciones.isChecked)
@@ -157,11 +168,23 @@ class PreferencesActivity : AppCompatActivity() {
 
         Toast.makeText(this, "Preferencias guardadas correctamente", Toast.LENGTH_SHORT).show()
 
-        // Volver atrás
-        Thread {
-            Thread.sleep(1000)
-            finish()
-        }.start()
+        // Si cambió el idioma o el tema, recrear la Activity principal
+        if (idiomaAnterior != idiomaSeleccionado || temaAnterior != temaSeleccionado) {
+            Thread {
+                Thread.sleep(1000)
+                // Volver a MainActivity y recrearla
+                val intent = Intent(this, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                finish()
+            }.start()
+        } else {
+            // Volver atrás normalmente
+            Thread {
+                Thread.sleep(1000)
+                finish()
+            }.start()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

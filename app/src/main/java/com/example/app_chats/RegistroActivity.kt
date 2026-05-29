@@ -54,33 +54,66 @@ class RegistroActivity : AppCompatActivity() {
 
     private fun ValidarDatos ( ){
 
-        val Nombre_de_usuario : String = Registro_EditT_Nombre_Usuario.text.toString()
-        val Correo_Electronico : String = R_ET_Email.text.toString()
-        val Contraseña = R_ET_Codigo.text.toString()
-        val Repetir_Codigo = R_ET_RepetirCode.text.toString()
+        val Nombre_de_usuario : String = Registro_EditT_Nombre_Usuario.text.toString().trim()
+        val Correo_Electronico : String = R_ET_Email.text.toString().trim()
+        val Contraseña = R_ET_Codigo.text.toString().trim()
+        val Repetir_Codigo = R_ET_RepetirCode.text.toString().trim()
 
-/* esto es para k si el usuario no introduce dato le da de introducirlo antes de registrar */
+        // Validación de nombre de usuario
         if(Nombre_de_usuario.isEmpty()){
-
             Toast.makeText(applicationContext,"Ingrese el nombre del usuario" , Toast.LENGTH_SHORT).show()
-
+            Registro_EditT_Nombre_Usuario.requestFocus()
+            return
         }
-        else if (Correo_Electronico.isEmpty()){
+        if (Nombre_de_usuario.length < 3) {
+            Toast.makeText(applicationContext,"El nombre debe tener al menos 3 caracteres" , Toast.LENGTH_SHORT).show()
+            Registro_EditT_Nombre_Usuario.requestFocus()
+            return
+        }
+        
+        // Validación de correo
+        if (Correo_Electronico.isEmpty()){
             Toast.makeText(applicationContext,"Ingrese tu correo" , Toast.LENGTH_SHORT).show()
+            R_ET_Email.requestFocus()
+            return
         }
-        else if (Contraseña.isEmpty()){
+        if (!isValidEmail(Correo_Electronico)) {
+            Toast.makeText(applicationContext,"Ingrese un correo válido" , Toast.LENGTH_SHORT).show()
+            R_ET_Email.requestFocus()
+            return
+        }
+        
+        // Validación de contraseña
+        if (Contraseña.isEmpty()){
             Toast.makeText(applicationContext,"Ingrese tu contraseña" , Toast.LENGTH_SHORT).show()
+            R_ET_Codigo.requestFocus()
+            return
         }
-        else if (Repetir_Codigo.isEmpty()){
-            Toast.makeText(applicationContext,"porfi , repite tu contraseña" , Toast.LENGTH_SHORT).show()
+        if (Contraseña.length < 6) {
+            Toast.makeText(applicationContext,"La contraseña debe tener al menos 6 caracteres" , Toast.LENGTH_SHORT).show()
+            R_ET_Codigo.requestFocus()
+            return
         }
-        else if (!Contraseña.equals(Repetir_Codigo)){
-            Toast.makeText(applicationContext,"Contraseña incorreta , repite otra vez " , Toast.LENGTH_SHORT).show()
+        
+        // Validación de confirmación
+        if (Repetir_Codigo.isEmpty()){
+            Toast.makeText(applicationContext,"Repite tu contraseña" , Toast.LENGTH_SHORT).show()
+            R_ET_RepetirCode.requestFocus()
+            return
         }
-        else{
+        
+        // Validación de coincidencia de contraseñas
+        if (!Contraseña.equals(Repetir_Codigo)){
+            Toast.makeText(applicationContext,"Las contraseñas no coinciden" , Toast.LENGTH_SHORT).show()
+            R_ET_RepetirCode.requestFocus()
+            return
+        }
 
-            RegistrarUsuario(Correo_Electronico,Contraseña)
-        }
+        RegistrarUsuario(Correo_Electronico, Contraseña)
+    }
+    
+    private fun isValidEmail(email: String): Boolean {
+        return email.contains("@") && email.contains(".")
     }
 
     private fun RegistrarUsuario(correoElectronico: String, contraseña: String) {

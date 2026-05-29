@@ -70,39 +70,42 @@ class AdaptadorChat (contexto: Context, chatLista: List<Chat>, imagenURL: String
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val chat : Chat = chatLista[position]
-        Glide.with(contexto).load(imagenURL).placeholder(R.drawable.ic_imagen_chat)
-            .into(holder.imagen_perfil_mensaje!!)
-
-        if (chat.getMensaje().equals("Se ha enviado la imagene") && !chat.getUrl().equals("")) {
-
-
-            /*condicion para que el usuario puede enviar un imagen como mensaje*/
-            if (chat.getEmisor().equals(firebaseUser!!.uid)) {
-
-                holder.TXT_ver_mensaje!!.visibility = View.GONE
-                holder.imagen_enviada_derecha!!.visibility = View.VISIBLE
-                Glide.with(contexto).load(chat.getUrl()).placeholder(R.drawable.ic_imagen_enviada).into(holder.imagen_enviada_derecha!!)
-
-            }
-
-            /*condicion para que el usuario el cual nos envia un imagen */
-
-            else if (!chat.getEmisor().equals(firebaseUser!!.uid)){
-
-                holder.TXT_ver_mensaje!!.visibility = View.GONE
-                holder.imagen_enviada_izquierdo!!.visibility = View.VISIBLE
-                Glide.with(contexto).load(chat.getUrl()).placeholder(R.drawable.ic_imagen_enviada).into(holder.imagen_enviada_izquierdo!!)
-            }
-
-
+        
+        // Cargar imagen de perfil con manejo de URL vacía
+        if (!imagenURL.isNullOrEmpty() && imagenURL.isNotBlank()) {
+            Glide.with(contexto)
+                .load(imagenURL)
+                .placeholder(R.drawable.ic_imagen_chat)
+                .error(R.drawable.ic_imagen_chat)
+                .into(holder.imagen_perfil_mensaje!!)
+        } else {
+            Glide.with(contexto)
+                .load(R.drawable.ic_imagen_chat)
+                .into(holder.imagen_perfil_mensaje!!)
         }
 
-
-else{
-
-    holder.TXT_ver_mensaje!!.text=chat.getMensaje()
-}
-
+        if (chat.getMensaje().equals("Se ha enviado la imagene") && !chat.getUrl().equals("")) {
+            /*condicion para que el usuario puede enviar un imagen como mensaje*/
+            if (chat.getEmisor().equals(firebaseUser!!.uid)) {
+                holder.TXT_ver_mensaje!!.visibility = View.GONE
+                holder.imagen_enviada_derecha!!.visibility = View.VISIBLE
+                Glide.with(contexto)
+                    .load(chat.getUrl())
+                    .placeholder(R.drawable.ic_imagen_enviada)
+                    .error(R.drawable.ic_imagen_enviada)
+                    .into(holder.imagen_enviada_derecha!!)
+            } else if (!chat.getEmisor().equals(firebaseUser!!.uid)) {
+                holder.TXT_ver_mensaje!!.visibility = View.GONE
+                holder.imagen_enviada_izquierdo!!.visibility = View.VISIBLE
+                Glide.with(contexto)
+                    .load(chat.getUrl())
+                    .placeholder(R.drawable.ic_imagen_enviada)
+                    .error(R.drawable.ic_imagen_enviada)
+                    .into(holder.imagen_enviada_izquierdo!!)
+            }
+        } else {
+            holder.TXT_ver_mensaje!!.text = chat.getMensaje()
+        }
     }
 
     override fun getItemCount(): Int {

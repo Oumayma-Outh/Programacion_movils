@@ -25,6 +25,8 @@ import com.example.app_chats.Utilidades.CloudinaryManager
 import com.example.app_chats.Utilidades.PreferencesManager
 import com.example.app_chats.Utilidades.AppNotificationManager
 import com.example.app_chats.Utilidades.SoundManager
+import com.example.app_chats.Utilidades.LocaleManager
+import com.example.app_chats.Utilidades.ThemeManager
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -46,11 +48,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Inicializar PreferencesManager para obtener preferencias guardadas
+        PreferencesManager.initialize(this)
+        
+        // Aplicar tema guardado
+        ThemeManager.applyStoredTheme(this)
+        
+        // Aplicar idioma guardado
+        LocaleManager.applyStoredLanguage(this)
+        
         setContentView(R.layout.activity_main)
         
         // Inicializar todos los managers
         CloudinaryManager.initialize(this)
-        PreferencesManager.initialize(this)
         AppNotificationManager.crearCanalNotificacion(this)
         SoundManager.initialize(this)
         

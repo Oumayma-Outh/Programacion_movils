@@ -108,8 +108,21 @@ class PerfilActivity : AppCompatActivity() {
                     P_domicilio.setText(str_domicilio)
                     P_edad.setText(str_edad)
                     P_telefono.setText(str_telefono)
-                    Glide.with(applicationContext).load(usuario.getImagen())
-                        .placeholder(R.drawable.ic_item_usuario).into(P_imagen)
+                    
+                    // Cargar imagen con manejo de URL vacía
+                    val imagenUrl = usuario.getImagen()
+                    if (!imagenUrl.isNullOrEmpty() && imagenUrl.isNotBlank()) {
+                        Glide.with(applicationContext)
+                            .load(imagenUrl)
+                            .placeholder(R.drawable.ic_item_usuario)
+                            .error(R.drawable.ic_item_usuario)
+                            .into(P_imagen)
+                    } else {
+                        // Si la URL está vacía, mostrar el placeholder
+                        Glide.with(applicationContext)
+                            .load(R.drawable.ic_item_usuario)
+                            .into(P_imagen)
+                    }
                 }
             }
 

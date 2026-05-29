@@ -51,15 +51,28 @@ class AdaptadorUsuario (context : Context, listaUsuarios : List<Usuario> , chatL
         holder.nombre_usuario.text = usuario.getN_Usuario()
         holder.email_usuario.text = usuario.getEmail()
 
-        Glide.with(context).load(usuario.getImagen()).placeholder(R.drawable.ic_item_usuario).into(holder.imagen_usuario)
-                """""esto para cuando selecionamos un usaurio entra al partado de mensajes """"
-    holder.itemView.setOnClickListener {
-
-    val intent = Intent(context, MensajesActivity::class.java)
-    intent.putExtra("uid_usuario", usuario.getUid())
-    Toast.makeText(context , "El usuario selecionado es : "+usuario.getN_Usuario(), Toast.LENGTH_SHORT).show()
-    context.startActivity(intent)
-}
+        // Cargar imagen con manejo de URL vacía
+        val imagenUrl = usuario.getImagen()
+        if (!imagenUrl.isNullOrEmpty() && imagenUrl.isNotBlank()) {
+            Glide.with(context)
+                .load(imagenUrl)
+                .placeholder(R.drawable.ic_item_usuario)
+                .error(R.drawable.ic_item_usuario)
+                .into(holder.imagen_usuario)
+        } else {
+            // Si la URL está vacía o es nula, mostrar el placeholder
+            Glide.with(context)
+                .load(R.drawable.ic_item_usuario)
+                .into(holder.imagen_usuario)
+        }
+        
+        // Cuando se selecciona un usuario, abre la pantalla de mensajes
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, MensajesActivity::class.java)
+            intent.putExtra("uid_usuario", usuario.getUid())
+            Toast.makeText(context , "El usuario selecionado es : "+usuario.getN_Usuario(), Toast.LENGTH_SHORT).show()
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
