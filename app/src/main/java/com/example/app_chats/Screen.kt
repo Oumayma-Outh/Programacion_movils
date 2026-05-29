@@ -21,7 +21,7 @@ class Screen : AppCompatActivity() {
 
         object : CountDownTimer(3000, 1080){
             override fun onTick (pb: Long) {
-               // TODO("Not yet implemented")
+                    // no-op: tick used for countdown visual updates if needed
             }
 
             override fun onFinish () {

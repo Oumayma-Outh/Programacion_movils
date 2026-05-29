@@ -113,7 +113,8 @@ class MensajesActivity : AppCompatActivity() {
                         }
 
                         override fun onCancelled(error: DatabaseError) {
-                            TODO("Not yet implemented")
+                            android.util.Log.e("MensajesActivity", "Database error (EnviarMensaje listener): ${error.message}")
+                            Toast.makeText(applicationContext, "Error al actualizar lista de mensajes", Toast.LENGTH_SHORT).show()
                         }
 
                     })
@@ -164,7 +165,8 @@ class MensajesActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                android.util.Log.e("MensajesActivity", "Database error (LeerInfoUsuario): ${error.message}")
+                Toast.makeText(applicationContext, "Error al leer información del usuario", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -200,7 +202,8 @@ class MensajesActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                android.util.Log.e("MensajesActivity", "Database error (RecuperarMensajes): ${error.message}")
+                Toast.makeText(applicationContext, "Error al recuperar mensajes", Toast.LENGTH_SHORT).show()
             }
 
         })

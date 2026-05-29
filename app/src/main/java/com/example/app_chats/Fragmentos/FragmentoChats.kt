@@ -59,7 +59,8 @@ class FragmentoChats : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                android.util.Log.e("FragmentoChats", "Database error: ${error.message}")
+                context?.let { android.widget.Toast.makeText(it, "Error al cargar lista de chats", android.widget.Toast.LENGTH_SHORT).show() }
             }
         })
         return view
@@ -89,7 +90,8 @@ class FragmentoChats : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                 android.util.Log.e("FragmentoChats", "Database error: ${error.message}")
+                 context?.let { android.widget.Toast.makeText(it, "Error al recuperar usuarios de chats", android.widget.Toast.LENGTH_SHORT).show() }
             }
 
         })

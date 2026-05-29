@@ -114,7 +114,8 @@ class PerfilActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                 android.util.Log.e("PerfilActivity", "Database error: ${error.message}")
+                 Toast.makeText(applicationContext, "Error al cargar perfil", Toast.LENGTH_SHORT).show()
             }
         })
     }

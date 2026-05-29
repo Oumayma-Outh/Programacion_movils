@@ -94,7 +94,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                android.util.Log.e("MainActivity", "Database error: ${error.message}")
+                Toast.makeText(applicationContext, "Error al leer datos", Toast.LENGTH_SHORT).show()
             }
 
         })

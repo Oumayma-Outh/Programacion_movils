@@ -93,7 +93,8 @@ class FragmentoUsuarios : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                android.util.Log.e("FragmentoUsuarios", "Database error: ${error.message}")
+                context?.let { android.widget.Toast.makeText(it, "Error al cargar usuarios", android.widget.Toast.LENGTH_SHORT).show() }
             }
 
         })
@@ -118,7 +119,8 @@ class FragmentoUsuarios : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                android.util.Log.e("FragmentoUsuarios", "Database error: ${error.message}")
+                context?.let { android.widget.Toast.makeText(it, "Error al buscar usuarios", android.widget.Toast.LENGTH_SHORT).show() }
             }
         })
     }
