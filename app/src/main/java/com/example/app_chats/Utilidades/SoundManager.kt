@@ -107,7 +107,12 @@ object SoundManager {
             try {
                 @Suppress("DEPRECATION")
                 val vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as android.os.Vibrator
-                vibrator.vibrate(duracion)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    val effect = android.os.VibrationEffect.createOneShot(duracion, android.os.VibrationEffect.DEFAULT_AMPLITUDE)
+                    vibrator.vibrate(effect)
+                } else {
+                    vibrator.vibrate(duracion)
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -122,7 +127,13 @@ object SoundManager {
             try {
                 @Suppress("DEPRECATION")
                 val vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as android.os.Vibrator
-                vibrator.vibrate(patron)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    val effect = android.os.VibrationEffect.createWaveform(patron, -1)
+                    vibrator.vibrate(effect)
+                } else {
+                    @Suppress("DEPRECATION")
+                    vibrator.vibrate(patron, -1)
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
             }

@@ -22,6 +22,9 @@ import com.example.app_chats.Fragmentos.FragmentoUsuarios
 import com.example.app_chats.Modelo.Usuario
 import com.example.app_chats.Perfil.PerfilActivity
 import com.example.app_chats.Utilidades.CloudinaryManager
+import com.example.app_chats.Utilidades.PreferencesManager
+import com.example.app_chats.Utilidades.AppNotificationManager
+import com.example.app_chats.Utilidades.SoundManager
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
